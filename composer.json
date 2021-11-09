@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "luoyy\\GtPush\\": "src/",
+            "luoyy\\GtPush\\": "src/"
         }
     },
     "extra": {
