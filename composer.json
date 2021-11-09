@@ -1,0 +1,31 @@
+{
+    "name": "luoyy/gtpush",
+    "description": "getui Push",
+    "require": {
+        "php": ">=7.2.0",
+        "guzzlehttp/guzzle": "^6.5.5|^7.0.1",
+        "league/flysystem": "^1.1.4|^2.1.1",
+        "nesbot/carbon": "^2.1"
+    },
+    "authors": [{
+        "name": "luoyy",
+        "email": "zishang520@gmail.com"
+    }],
+    "keywords": ["getui push", "laravel", "lumen"],
+    "support": {
+        "issues": "https://github.com/zishang520/gtpush/issues",
+        "source": "https://github.com/zishang520/gtpush"
+    },
+    "autoload": {
+        "psr-4": {
+            "luoyy\\GtPush\\": "src/",
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "luoyy\\GtPush\\Providers\\PushServiceProvider"
+            ]
+        }
+    }
+}
