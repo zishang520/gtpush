@@ -13,13 +13,13 @@ class UserAlias implements JsonSerializable, Arrayable, Renderable, Jsonable
      * 用户标识.
      * @var string
      */
-    private $cid;
+    protected $cid;
 
     /**
      * 别名，有效的别名组成： 字母（区分大小写）、数字、下划线、汉字; 长度<40; 一个别名最多允许绑定10个cid.
      * @var string
      */
-    private $alias;
+    protected $alias;
 
     /**
      * 查询用户总量条件参数.

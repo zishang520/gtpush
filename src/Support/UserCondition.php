@@ -13,19 +13,19 @@ class UserCondition implements JsonSerializable, Arrayable, Renderable, Jsonable
      * 查询条件(phone_type 手机类型,region 省市,custom_tag 用户标签，设置标签请见接口).
      * @var string
      */
-    private $type;
+    protected $type;
 
     /**
      * 查询条件值列表，其中 手机型号使用如下参数android和ios； 省市使用编号，点击下载文件region_code.data.
      * @var string[]
      */
-    private $values = [];
+    protected $values = [];
 
     /**
      * or(或),and(与),not(非)，values间的交并补操作.
      * @var string
      */
-    private $logic;
+    protected $logic;
 
     /**
      * 查询用户总量条件参数.
