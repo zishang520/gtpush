@@ -42,6 +42,13 @@ class Channel extends ChannelData
      */
     protected $apns_collapse_id = null;
 
+    public function __construct(?string $type = 'notify', ?ChannelAps $aps = null, ?string $auto_badge = null)
+    {
+        $this->type = $type;
+        $this->aps = $aps;
+        $this->auto_badge = $auto_badge;
+    }
+
     public function setType(?string $type = 'notify')
     {
         $this->type = $type;
@@ -88,7 +95,7 @@ class Channel extends ChannelData
      */
     public function data(): array
     {
-        return [
+        return array_filter([
             'type' => $this->type,
             'aps' => !is_null($this->aps) ? ($this->aps->toArray() ?: null) : null,
             'auto_badge' => $this->auto_badge,
@@ -97,6 +104,8 @@ class Channel extends ChannelData
                 return $multimedia->toArray();
             }, $this->multimedia) ?: null) : null,
             'apns_collapse_id' => $this->apns_collapse_id,
-        ];
+        ], function ($v) {
+            return !is_null($v);
+        });
     }
 }

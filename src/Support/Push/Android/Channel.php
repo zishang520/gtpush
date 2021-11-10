@@ -33,8 +33,10 @@ class Channel extends ChannelData
      */
     public function data(): array
     {
-        return [
+        return array_filter([
             'ups' => !is_null($this->ups) ? ($this->ups->toArray() ?: null) : null,
-        ];
+        ], function ($v) {
+            return !is_null($v);
+        });
     }
 }
