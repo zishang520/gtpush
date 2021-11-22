@@ -120,7 +120,7 @@ class Push
         }
         if (!empty($auth = $this->auth())) {
             $this->token = $auth->token;
-            call_user_func([$this->cache_class, 'put'], $this->cache_key, $auth->token, Carbon::createFromTimestampMs($auth->expire_time));
+            call_user_func([$this->cache_class, 'put'], $this->cache_key, $auth->token, Carbon::createFromTimestampMs($auth->expire_time)->subHours(5));
             return $this->token;
         }
         throw new \RuntimeException(sprintf('Get token fail: %s.', $this->errMsg() ?: 'Request failed'), $this->errCode());
@@ -132,9 +132,17 @@ class Push
      */
     public function api(string $method, string $command, array $data = [])
     {
-        return $this->request($method, $command, array_filter($data, function ($v) {
+        // 如果token失效，重试
+        if (($data = $this->request($method, $command, array_filter($data, function ($v) {
             return !is_null($v);
-        }), ['Token' => $this->getToken()]);
+        }), ['Token' => $this->getToken()])) === false) {
+            if (((int) $this->errCode) === 10001) {
+                $data = $this->request($method, $command, array_filter($data, function ($v) {
+                    return !is_null($v);
+                }), ['Token' => $this->getToken(true)]);
+            }
+        }
+        return $data;
     }
 
     /**
@@ -179,8 +187,8 @@ class Push
                 }
                 return $body->data ?? null;
             }
-            $this->errMsg = -1;
-            $this->errCode = '请求失败';
+            $this->errMsg = '请求失败';
+            $this->errCode = -1;
             return false;
         } catch (ClientException $e) {
             if ($e->hasResponse() && !empty($body = json_decode((string) $e->getResponse()->getBody()))) {
@@ -188,8 +196,8 @@ class Push
                 $this->errCode = $body->code ?? -1;
                 return false;
             }
-            $this->errMsg = -1;
-            $this->errCode = '请求失败';
+            $this->errMsg = '请求失败';
+            $this->errCode = -1;
             return false;
         } catch (Throwable $e) {
             $this->errMsg = $e->getMessage();
