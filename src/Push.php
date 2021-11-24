@@ -133,16 +133,16 @@ class Push
     public function api(string $method, string $command, array $data = [])
     {
         // 如果token失效，重试
-        if (($data = $this->request($method, $command, array_filter($data, function ($v) {
+        if (($result = $this->request($method, $command, array_filter($data, function ($v) {
             return !is_null($v);
         }), ['Token' => $this->getToken()])) === false) {
             if (((int) $this->errCode) === 10001) {
-                $data = $this->request($method, $command, array_filter($data, function ($v) {
+                $result = $this->request($method, $command, array_filter($data, function ($v) {
                     return !is_null($v);
                 }), ['Token' => $this->getToken(true)]);
             }
         }
-        return $data;
+        return $result;
     }
 
     /**
