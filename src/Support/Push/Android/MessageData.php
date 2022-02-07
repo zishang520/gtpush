@@ -12,7 +12,7 @@ abstract class MessageData implements JsonSerializable, Arrayable, Renderable, J
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->render();
     }

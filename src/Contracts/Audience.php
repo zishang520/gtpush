@@ -12,7 +12,7 @@ abstract class Audience implements JsonSerializable, Arrayable, Renderable, Json
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->render();
     }

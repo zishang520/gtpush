@@ -80,7 +80,7 @@ class Intent implements Renderable
         $this->up_ol_su = $up_ol_su ? 'true' : 'false';
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf('intent://%s/%s?#Intent;%s;end', $this->host ?? $this->package_name, $this->path ?? '', $this->buildIntent());
     }
