@@ -72,20 +72,16 @@ abstract class PushMessage implements JsonSerializable, Arrayable, Renderable, J
 
     /**
      * Convert the fluent instance to an array.
-     *
-     * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         return $this->data();
     }
 
     /**
      * Convert the object into something JSON serializable.
-     *
-     * @return array
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return $this->toArray();
     }

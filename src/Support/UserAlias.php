@@ -47,10 +47,8 @@ class UserAlias implements JsonSerializable, Arrayable, Renderable, Jsonable
 
     /**
      * Convert the fluent instance to an array.
-     *
-     * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         return [
             'cid' => $this->cid,
@@ -60,10 +58,8 @@ class UserAlias implements JsonSerializable, Arrayable, Renderable, Jsonable
 
     /**
      * Convert the object into something JSON serializable.
-     *
-     * @return array
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return $this->toArray();
     }

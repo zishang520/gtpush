@@ -50,7 +50,7 @@ class Message implements JsonSerializable, Arrayable, Renderable, Jsonable
      *
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         return array_filter([
             'duration' => $this->duration,
@@ -64,7 +64,7 @@ class Message implements JsonSerializable, Arrayable, Renderable, Jsonable
      *
      * @return array
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return $this->toArray();
     }

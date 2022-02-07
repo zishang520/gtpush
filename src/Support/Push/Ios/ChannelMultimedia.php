@@ -48,7 +48,7 @@ class ChannelMultimedia implements JsonSerializable, Arrayable, Renderable, Json
     /**
      * Convert the fluent instance to an array.
      */
-    public function toArray(): array
+    public function toArray(): array: array
     {
         return array_filter([
             'url' => $this->url,
@@ -64,7 +64,7 @@ class ChannelMultimedia implements JsonSerializable, Arrayable, Renderable, Json
      *
      * @return array
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return $this->toArray();
     }

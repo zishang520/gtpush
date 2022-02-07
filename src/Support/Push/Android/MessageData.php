@@ -24,7 +24,7 @@ abstract class MessageData implements JsonSerializable, Arrayable, Renderable, J
      *
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         return $this->data();
     }
@@ -34,7 +34,7 @@ abstract class MessageData implements JsonSerializable, Arrayable, Renderable, J
      *
      * @return array
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return $this->toArray();
     }

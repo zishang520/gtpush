@@ -24,7 +24,7 @@ abstract class Audience implements JsonSerializable, Arrayable, Renderable, Json
      *
      * @return mixed
      */
-    public function toArray()
+    public function toArray(): array
     {
         return $this->data();
     }
@@ -34,7 +34,7 @@ abstract class Audience implements JsonSerializable, Arrayable, Renderable, Json
      *
      * @return mixed
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return $this->toArray();
     }

@@ -150,7 +150,7 @@ class ChannelApsAlert implements JsonSerializable, Arrayable, Renderable, Jsonab
     /**
      * Convert the fluent instance to an array.
      */
-    public function toArray(): array
+    public function toArray(): array: array
     {
         return array_filter([
             'title' => $this->title,
@@ -174,7 +174,7 @@ class ChannelApsAlert implements JsonSerializable, Arrayable, Renderable, Jsonab
      *
      * @return array
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return $this->toArray();
     }

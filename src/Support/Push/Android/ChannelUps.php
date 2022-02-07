@@ -49,7 +49,7 @@ class ChannelUps implements JsonSerializable, Arrayable, Renderable, Jsonable
      *
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         return array_filter([
             'options' => $this->options,
@@ -63,7 +63,7 @@ class ChannelUps implements JsonSerializable, Arrayable, Renderable, Jsonable
      *
      * @return array
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return $this->toArray();
     }

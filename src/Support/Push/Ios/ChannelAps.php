@@ -81,7 +81,7 @@ class ChannelAps implements JsonSerializable, Arrayable, Renderable, Jsonable
     /**
      * Convert the fluent instance to an array.
      */
-    public function toArray(): array
+    public function toArray(): array: array
     {
         return array_filter([
             'alert' => !is_null($this->alert) ? $this->alert->toArray() : null,
@@ -99,7 +99,7 @@ class ChannelAps implements JsonSerializable, Arrayable, Renderable, Jsonable
      *
      * @return array
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return $this->toArray();
     }
