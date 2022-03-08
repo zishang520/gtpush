@@ -48,7 +48,7 @@ class ChannelMultimedia implements JsonSerializable, Arrayable, Renderable, Json
     /**
      * Convert the fluent instance to an array.
      */
-    public function toArray(): array: array
+    public function toArray(): array
     {
         return array_filter([
             'url' => $this->url,
