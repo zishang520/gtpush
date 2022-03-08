@@ -77,7 +77,7 @@ class Settings implements JsonSerializable, Arrayable, Renderable, Jsonable
     /**
      * Convert the fluent instance to an array.
      */
-    public function toArray(): array: array
+    public function toArray(): array
     {
         return array_filter([
             'ttl' => $this->ttl,
@@ -91,8 +91,6 @@ class Settings implements JsonSerializable, Arrayable, Renderable, Jsonable
 
     /**
      * Convert the object into something JSON serializable.
-     *
-     * @return array
      */
     public function jsonSerialize(): array
     {
